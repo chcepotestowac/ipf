@@ -1,0 +1,40 @@
+Feature1:
+Scenario:User checks if possible to get more than he has.
+- zaczynamy z kontem na którym jest 200 pln
+
+- chcemy wypłacić 500 pln
+
+- sprawdzamy error message
+
+- sprawdzamy ile wypłaciliśmy pieniędzy
+
+- sprawdzamy jaka kwota znajduje się na koncie
+@TEST1
+Given Account with 200 pln
+When User want to get 500
+Then Error Message should appear
+  And Check how much money was received
+  And What a amount is on account
+
+
+
+
+
+Feature2:
+Scenario: User check account with differnt options of amount
+- zaczynamy z kontem na którym jest 200 pln
+
+- chcemy wypłacić 0 pln / 50 pln / 100 pln / 150 pln / 200 pln
+
+- sprawdzamy czy kwota którą dostaliśmy to poprawna kwota
+
+- sprawdzamy czy ktowa która została na koncie jest odpowiednia
+@TEST2
+Given User has account with 200 pln
+  When User pay out :
+  |Amount|Sum|
+  |0     |200|
+  |50    |250|
+  |100   |300|
+  |150   |350|
+  |200   |400|
